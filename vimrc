@@ -1,3 +1,4 @@
+" Run `fetch` to bundle vim plugins
 "=bundle tpope/vim-pathogen
 "=bundle tpope/vim-sensible
 "=bundle scrooloose/nerdtree
@@ -14,20 +15,21 @@
 "=bundle slim-template/vim-slim
 "=bundle tpope/vim-bundler
 "=bundle tpope/vim-fugitive
-"=bundle tpope/vim-rails
 "=bundle tpope/vim-rake
 "=bundle tpope/vim-haml # for scss
 "=bundle tpope/vim-surround
 "=bundle sjl/gundo.vim
 "=bundle bling/vim-airline
 "=bundle airblade/vim-gitgutter
+" Disabled Plugins
+"bundle tpope/vim-rails
 
 source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#incubate()
 
 " Colors
 set t_Co=256
-silent! colorscheme spacemanspiff
+colorscheme spacemanspiff
 
 " Wildmenu completion
 set wildmenu

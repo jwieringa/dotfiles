@@ -10,3 +10,6 @@ if [[ -e /usr/local/share/chruby ]]; then
     chruby $(cat ~/.ruby-version)
   fi
 fi
+
+alias pg-start='pg_ctl -D /usr/local/var/postgres -l logfile start'
+alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
