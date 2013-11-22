@@ -1,0 +1,34 @@
+[user]
+	name = Jason Wieringa
+	email = jason@jasonwieringa.com
+
+[core]
+	excludesfile = /Users/jason/.gitignore_global
+  editor = vim
+
+[github]
+  user = jwieringa
+
+[alias]
+  hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  report = log --pretty=format:'%Cred%h   %C(bold green)%ai   %C(bold blue)%cn \n - %s'
+  st = status -sb # -uno
+  tree = log --oneline --decorate --graph
+  latest = for-each-ref --count=10 --sort=-committerdate --format='%(committerdate:short) %(refname:short)'
+  la = log --graph --color --pretty=format:'%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset' --all
+
+[help]
+  autocorrect = 1
+
+[color]
+  ui = auto
+  grep = auto
+  branch = auto
+  diff = auto
+
+[pull]
+  rebase = true
+
+[diff]
+  algorithm = patience
+  status = auto
