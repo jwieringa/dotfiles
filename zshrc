@@ -11,3 +11,5 @@ alias bi="bundle install --path vendor/bundle"
 # Git Alias
 alias gc="git commit"
 alias gst="git status"
+
+export PATH="/Users/jason/prj/res/dotfiles/bin:$PATH"
