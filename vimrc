@@ -1,35 +1,44 @@
-" Run `fetch` to bundle vim plugins
+" Run `infect` to bundle vim plugins
+" https://github.com/csexton/infect
+"
+"=bundle fatih/vim-go
+"=bundle /elzr/vim-json
+"=bundle ekalinin/Dockerfile.vim
 "=bundle tpope/vim-pathogen
 "=bundle tpope/vim-sensible
 "=bundle scrooloose/nerdtree
 "=bundle tpope/vim-fugitive
-"=bundle guns/vim-clojure-static
 "=bundle tpope/vim-endwise
-"=bundle Shougo/unite.vim
 "=bundle csexton/trailertrash.vim
 "=bundle csexton/vim-markdown
-"=bundle ervandew/ag
-"=bundle kchmck/vim-coffee-script
-"=bundle mattn/gist-vim
+"=bundle rking/ag.vim
 "=bundle pangloss/vim-javascript
 "=bundle slim-template/vim-slim
 "=bundle tpope/vim-bundler
-"=bundle tpope/vim-fugitive
 "=bundle tpope/vim-rake
 "=bundle tpope/vim-haml # for scss
 "=bundle tpope/vim-surround
 "=bundle sjl/gundo.vim
 "=bundle bling/vim-airline
 "=bundle airblade/vim-gitgutter
+"=bundle kien/ctrlp.vim
+"=bundle Shougo/unite.vim
+"=bundle markcornick/vim-terraform
+"=bundle godlygeek/tabular
+"
 " Disabled Plugins
 "bundle tpope/vim-rails
+"bundle ervandew/ag
+"bundle guns/vim-clojure-static
+"bundle kchmck/vim-coffee-script
+"bundle mattn/gist-vim
 
 source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#incubate()
+execute pathogen#infect('bundle/{}')
 
 " Colors
 set t_Co=256
-colorscheme spacemanspiff
+colorscheme mustang-by-hcalves
 
 " Wildmenu completion
 set wildmenu
@@ -55,6 +64,7 @@ set noswapfile            " It's 2012, Vim. Yep, and they get in the way
 
 " Make those debugger statements painfully obvious
 au BufEnter *.rb syn match error contained "\<binding.pry\>"
+au BufEnter *.rb syn match error contained "\<binding.pry_remote\>"
 au BufEnter *.rb syn match error contained "\<debugger\>"
 
 " Whitespace related
@@ -63,6 +73,7 @@ set tabstop=2             " A tab is two spaces
 set shiftwidth=2          " number of spaces to use for auto indenting
 set softtabstop=2         " how many columns vim uses when hitting tab in insert mode
 set expandtab             " convert tabs into appropriate number of spaces
+set paste                 " copies in test from outside sources correctly
 
 " Search
 set hlsearch              " Highlight searches
@@ -101,6 +112,9 @@ au BufRead,BufNewFile *.rabl setf ruby
 au BufRead,BufNewFile *.rabl syn keyword rubyRabl node attribute object child collection attributes glue extends
 au BufRead,BufNewFile *.rabl hi def link rubyRabl Function
 
-" Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}
-set ft=ruby
+" File formatting
+au BufRead,BufNewFile *.jbuilder setf ruby
+au BufRead,BufNewFile *.chef setf ruby
+au BufRead,BufNewFile {Berksfile,Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+
+" ctrl-p Config

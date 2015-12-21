@@ -16,7 +16,6 @@
 *.jar
 *.rar
 *.tar
-*.zip
 
 # Logs and databases #
 ######################
@@ -26,8 +25,8 @@
 
 # OS generated files #
 ######################
-.DS_Store
-.DS_Store?
+*.DS_Store
+*.DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
@@ -42,3 +41,7 @@ Thumbs.db
 # pow configs #
 ###############
 .powenv
+
+# Silver Searcher ignore list #
+###############################
+.agignore

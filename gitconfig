@@ -1,34 +1,56 @@
+# http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+
 [user]
 	name = Jason Wieringa
 	email = jason@jasonwieringa.com
-
+  logallrefupdates=true
 [core]
-	excludesfile = /Users/jason/.gitignore_global
+	excludesfile = /Users/jaso7584/.gitignore_global
   editor = vim
-
 [github]
   user = jwieringa
-
 [alias]
-  hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  f = "!git ls-files | grep -i"
+  dr  = "!f() { git diff "$1"^.."$1"; }; f"
+  lc  = "!f() { git ll "$1"^.."$1"; }; f"
+  diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+  dlc = diff --cached HEAD^
+  dl = "!git ll -1"
+  fl = log -u
+  le = log --oneline --decorate
+  ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative # --all
   report = log --pretty=format:'%Cred%h   %C(bold green)%ai   %C(bold blue)%cn \n - %s'
   st = status -sb # -uno
   tree = log --oneline --decorate --graph
   latest = for-each-ref --count=10 --sort=-committerdate --format='%(committerdate:short) %(refname:short)'
   la = log --graph --color --pretty=format:'%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset' --all
-
 [help]
   autocorrect = 1
-
 [color]
   ui = auto
   grep = auto
   branch = auto
   diff = auto
-
 [pull]
   rebase = true
-
 [diff]
   algorithm = patience
   status = auto
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[url "https://"]
+	insteadOf = git://
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
