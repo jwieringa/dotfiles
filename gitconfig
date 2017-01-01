@@ -2,8 +2,9 @@
 
 [user]
 	name = Jason Wieringa
-	email = jason@jasonwieringa.com
+	email = jason@wieringa.co
   logallrefupdates=true
+	signingkey = D09491EB
 [core]
 	excludesfile = /Users/jaso7584/.gitignore_global
   editor = vim
@@ -51,6 +52,8 @@
 	smudge = git hawser smudge %f
 	required = true
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
 	required = true
+# [commit]
+# 	gpgsign = true

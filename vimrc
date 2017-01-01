@@ -2,7 +2,7 @@
 " https://github.com/csexton/infect
 "
 "=bundle fatih/vim-go
-"=bundle /elzr/vim-json
+"=bundle elzr/vim-json
 "=bundle ekalinin/Dockerfile.vim
 "=bundle tpope/vim-pathogen
 "=bundle tpope/vim-sensible
@@ -16,29 +16,25 @@
 "=bundle slim-template/vim-slim
 "=bundle tpope/vim-bundler
 "=bundle tpope/vim-rake
-"=bundle tpope/vim-haml # for scss
+"=bundle tpope/vim-haml
 "=bundle tpope/vim-surround
-"=bundle sjl/gundo.vim
 "=bundle bling/vim-airline
 "=bundle airblade/vim-gitgutter
-"=bundle kien/ctrlp.vim
-"=bundle Shougo/unite.vim
-"=bundle markcornick/vim-terraform
 "=bundle godlygeek/tabular
-"
+"=bundle moll/vim-node
+"=bundle hashivim/vim-terraform
+
 " Disabled Plugins
-"bundle tpope/vim-rails
+"bundle Shougo/neocomplete.vim
+"bundle sjl/gundo.vim
+"bundle kien/ctrlp.vim
+"bundle Shougo/unite.vim
+"bundle fatih/vim-hclfmt
+"bundle hashivim/vim-packer
 "bundle ervandew/ag
-"bundle guns/vim-clojure-static
-"bundle kchmck/vim-coffee-script
-"bundle mattn/gist-vim
 
 source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect('bundle/{}')
-
-" Colors
-set t_Co=256
-colorscheme mustang-by-hcalves
 
 " Wildmenu completion
 set wildmenu
@@ -55,6 +51,17 @@ set wildignore+=*.DS_Store                       " OSX bullshit
 set wildignore+=*.luac                           " Lua byte code
 set wildignore+=*.orig                           " Merge resolution files
 set wildignore+=*vendor/gems/*
+
+" Enable vim-go settings
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+" vim-terraform settings
+" let g:terraform_fmt_on_save = 1
 
 " General Settings
 set nocompatible          " Running Vim, not Vi
@@ -116,5 +123,4 @@ au BufRead,BufNewFile *.rabl hi def link rubyRabl Function
 au BufRead,BufNewFile *.jbuilder setf ruby
 au BufRead,BufNewFile *.chef setf ruby
 au BufRead,BufNewFile {Berksfile,Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
-
-" ctrl-p Config
+au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
