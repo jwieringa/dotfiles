@@ -23,6 +23,7 @@
 "=bundle godlygeek/tabular
 "=bundle moll/vim-node
 "=bundle hashivim/vim-terraform
+"=bundle wannesm/wmgraphviz.vim
 
 " Disabled Plugins
 "bundle Shougo/neocomplete.vim
@@ -60,8 +61,12 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
+" Graphiz settings: wannesm/wmgraphviz.vim
+let g:WMGraphviz_viewer = 'open'
+let g:WMGraphviz_output = 'png'
+
 " vim-terraform settings
-" let g:terraform_fmt_on_save = 1
+let g:terraform_fmt_on_save = 1
 
 " General Settings
 set nocompatible          " Running Vim, not Vi
