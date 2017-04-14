@@ -24,6 +24,7 @@
 "=bundle moll/vim-node
 "=bundle hashivim/vim-terraform
 "=bundle wannesm/wmgraphviz.vim
+"=bundle chr4/nginx.vim
 
 " Disabled Plugins
 "bundle Shougo/neocomplete.vim
