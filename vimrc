@@ -129,6 +129,7 @@ au BufRead,BufNewFile *.rabl syn keyword rubyRabl node attribute object child co
 au BufRead,BufNewFile *.rabl hi def link rubyRabl Function
 
 " File formatting
+" au BufRead,BufNewFile {Jenkinsfile} set ft=groovy
 au BufRead,BufNewFile *.jbuilder setf ruby
 au BufRead,BufNewFile *.chef setf ruby
 au BufRead,BufNewFile {Berksfile,Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
