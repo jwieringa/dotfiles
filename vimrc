@@ -25,6 +25,9 @@
 "=bundle hashivim/vim-terraform
 "=bundle wannesm/wmgraphviz.vim
 "=bundle chr4/nginx.vim
+"=bundle martinda/Jenkinsfile-vim-syntax
+"=bundle z0mbix/vim-shfmt
+"=bundle burnettk/vim-jenkins
 
 " Disabled Plugins
 "bundle Shougo/neocomplete.vim
