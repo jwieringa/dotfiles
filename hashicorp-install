@@ -1,0 +1,33 @@
+#!/bin/bash
+# Author: Jason Wieringa
+
+
+# https://releases.hashicorp.com/terraform/0.10.7/terraform_0.10.7_darwin_amd64.zip
+
+: ${PRODUCT:?"Set to desired Hashicorp product"}
+: ${VERSION:?"Set to desired Hashicorp product version"}
+
+SYSTEM=darwin
+ARCH=amd64
+
+echo "Import Hashicorp PGP Public keys"
+curl -sf https://keybase.io/hashicorp/pgp_keys.asc | gpg --import
+mkdir -p /tmp/${PRODUCT}
+pushd /tmp/${PRODUCT}
+echo "Download dependencies..."
+curl -sfO https://releases.hashicorp.com/${PRODUCT}/${VERSION}/${PRODUCT}_${VERSION}_${SYSTEM}_${ARCH}.zip
+curl -sfO https://releases.hashicorp.com/${PRODUCT}/${VERSION}/${PRODUCT}_${VERSION}_SHA256SUMS
+curl -sfO https://releases.hashicorp.com/${PRODUCT}/${VERSION}/${PRODUCT}_${VERSION}_SHA256SUMS.sig
+echo "Verify gpg keys..."
+gpg --batch --verify ${PRODUCT}_${VERSION}_SHA256SUMS.sig /tmp/${PRODUCT}/${PRODUCT}_${VERSION}_SHA256SUMS
+egrep "_${SYSTEM}_${ARCH}" ${PRODUCT}_${VERSION}_SHA256SUMS | shasum -a 256 -c -
+echo "Unziping ${PRODUCT}..."
+unzip -o "${PRODUCT}_${VERSION}_${SYSTEM}_${ARCH}.zip"
+echo "Installing ${PRODUCT} in /opt/bin/${PRODUCT}-${VERSION}..."
+cp ${PRODUCT} /opt/bin/${PRODUCT}-${VERSION}
+popd
+echo "Cleaning up..."
+rm -rf /tmp/${PRODUCT}
+chmod +x /opt/bin/${PRODUCT}-${VERSION}
+echo "Finished installing ${PRODUCT}"
+echo -e "Use by:\nln -s /opt/bin/${PRODUCT}-${VERSION} /opt/bin/${PRODUCT}"

@@ -1,0 +1,14 @@
+#!/bin/bash
+# Author: Jason Wieringa <jason@wieringa.io>
+# Apple 10.12.6 (16G29), 10/25/2017
+
+: ${VERSION:?"Set to desired Ruby version"}
+
+# Rely on brew install zlib
+# For compilers to find this software you may need to set:
+#   LDFLAGS:  -L/usr/local/opt/zlib/lib
+#   CPPFLAGS: -I/usr/local/opt/zlib/include
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+
+ruby-install ruby $VERSION
