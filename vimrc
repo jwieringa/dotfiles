@@ -71,6 +71,8 @@ let g:WMGraphviz_output = 'png'
 
 " vim-terraform settings
 let g:terraform_fmt_on_save = 1
+let g:terraform_fold_sections=1
+let g:terraform_remap_spacebar=1
 
 " General Settings
 set nocompatible          " Running Vim, not Vi
