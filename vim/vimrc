@@ -1,0 +1,155 @@
+" Use infect to install plugins: https://github.com/csexton/infect
+" $ infect
+
+"=plugin csexton/spacemanspiff.vim
+"=plugin csexton/trailertrash.vim
+"=plugin csexton/vim-markdown
+"=plugin tpope/vim-sensible
+"=plugin tpope/vim-fugitive
+"=plugin tpope/vim-endwise
+"=plugin tpope/vim-bundler
+"=plugin tpope/vim-rake
+"=plugin tpope/vim-surround
+"=plugin fatih/vim-go
+"=plugin elzr/vim-json
+"=plugin ekalinin/Dockerfile.vim
+"=plugin scrooloose/nerdtree
+"=plugin rking/ag.vim
+"=plugin pangloss/vim-javascript
+"=plugin slim-template/vim-slim
+"=plugin bling/vim-airline
+"=plugin airblade/vim-gitgutter
+"=plugin godlygeek/tabular
+"=plugin hashivim/vim-hashicorp-tools
+"=plugin z0mbix/vim-shfmt
+"=plugin junegunn/fzf
+"=plugin w0rp/ale
+
+" Wildmenu completion
+set wildmenu
+set wildmode=list:longest,list:full
+set wildmode=longest:full,full
+set wildignore+=*~
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=*.orig                           " Merge resolution files
+set wildignore+=*vendor/gems/*
+
+" Enable vim-go settings
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+" Graphiz settings: wannesm/wmgraphviz.vim
+" let g:WMGraphviz_viewer = 'open'
+" let g:WMGraphviz_output = 'png'
+
+" ALE
+
+" let g:ale_sign_warning = '•'
+" let g:ale_ruby_rubocop_executable = './bin/rubocop'
+" highlight link ALEErrorSign WarningMsg
+" highlight link ALEWarningSign Comment
+" nnoremap <silent> <leader>a :ALEToggle<CR>
+
+" This seems to be broken, so I just call their disable function
+" let g:ale_set_balloons = 0
+" call ale#balloon#Disable()
+
+" let g:ale_sign_column_always = 1
+" autocmd BufRead,BufNewFile * setlocal signcolumn=yes
+" autocmd FileType unite,nerdtree setlocal signcolumn=no
+
+" function! DisableAleStrategy(cmd)
+"   ALEDisable
+"   execute '!'.a:cmd
+"   ALEEnable
+" endfunction
+
+"let g:test#custom_strategies = {'disable_ale': function('DisableAleStrategy')}
+"let g:test#strategy = 'disable_ale'
+
+" vim-terraform settings
+let g:terraform_align=1
+let g:terraform_fmt_on_save = 1
+let g:terraform_fold_sections=1
+let g:terraform_remap_spacebar=1
+" let g:terraform_commentstring='//%s'
+
+" General Settings
+set nocompatible          " Running Vim, not Vi
+set number                " Always show line numbers
+set showmode              " Always show what mode we're currently in
+set noswapfile            " It's 2012, Vim. Yep, and they get in the way
+
+" Make those debugger statements painfully obvious
+au BufEnter *.rb syn match error contained "\<binding.pry\>"
+au BufEnter *.rb syn match error contained "\<binding.pry_remote\>"
+au BufEnter *.rb syn match error contained "\<debugger\>"
+
+" Whitespace related
+set nowrap                " No word wrap
+set tabstop=2             " A tab is two spaces
+set shiftwidth=2          " number of spaces to use for auto indenting
+set softtabstop=2         " how many columns vim uses when hitting tab in insert mode
+set expandtab             " convert tabs into appropriate number of spaces
+set paste                 " copies in test from outside sources correctly
+
+" Search
+set hlsearch              " Highlight searches
+set ignorecase            " Ignore case in searches
+set smartcase             " smartcase make /-style searches case-sensitive only if there is capital n the search expression
+
+" Fuzzy Finder https://github.com/junegunn/fzf
+set rtp+=/usr/local/opt/fzf
+
+" Status Bar
+set statusline=%t\ %r\ %y\ format:\ %{&ff};\ [%c,%l]  " Format statusbar http://vim.runpaint.org/display/changing-status-line/
+
+" NerdTREE settings
+let NERDTreeShowHidden=1             " Show hidden files
+
+" " Mappings
+let mapleader = ","                  " Set leader key
+map <leader>nt :NERDTree<CR>         " Set NERDTree shortcut
+map <leader>ev :e $MYViMRC<CR>       " Quickly edit the vimrc file
+map <leader>sv :so $MYViMRC<CR>      " Quickly reload the vimrc file
+map <leader>cs :noh<cr>
+
+" easier window switching
+map <C-J> <C-W>j<C-W>
+map <C-K> <C-W>k<C-W>
+
+" File Types
+filetype on                 " Enable filetype detection
+filetype indent on          " Enable filetype-specific indenting
+filetype plugin indent on
+syntax on                   " Enable syntax highlightint
+set autoread                " Reload a file when it has been changed outside of vim
+set autowrite               " Automatically save before commands like :next and :make
+set showmatch               " Show matching brackets.
+set spelllang=en_us         " Make vim speak 'merican
+
+" Rabl settings
+au BufRead,BufNewFile *.rabl setf ruby
+au BufRead,BufNewFile *.rabl syn keyword rubyRabl node attribute object child collection attributes glue extends
+au BufRead,BufNewFile *.rabl hi def link rubyRabl Function
+
+" File formatting
+" au BufRead,BufNewFile {Jenkinsfile} set ft=groovy
+au BufRead,BufNewFile *.jbuilder setf ruby
+au BufRead,BufNewFile *.chef setf ruby
+au BufRead,BufNewFile {Berksfile,Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
+
+" Because i love Apple keyboards
+" au BufWritePost * :%s/i/i/e

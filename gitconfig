@@ -3,50 +3,51 @@
 [user]
 	name = Jason Wieringa
 	email = jason@wieringa.io
-  logallrefupdates=true
-	signingkey = D09491EB
+	logallrefupdates=true
+	signingkey = 4A09FD00DDC28D43
 [core]
-	excludesfile = /Users/jaso7584/.gitignore_global
-  editor = vim
+	excludesfile = /Users/jason/.gitignore_global
+	editor = vim
 [github]
-  user = jwieringa
+	user = jwieringa
 [alias]
-  f = "!git ls-files | grep -i"
-  dr  = "!f() { git diff "$1"^.."$1"; }; f"
-  lc  = "!f() { git ll "$1"^.."$1"; }; f"
-  diffr  = "!f() { git diff "$1"^.."$1"; }; f"
-  dlc = diff --cached HEAD^
-  dl = "!git ll -1"
-  fl = log -u
-  le = log --oneline --decorate
-  ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-  hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative # --all
-  report = log --pretty=format:'%Cred%h   %C(bold green)%ai   %C(bold blue)%cn \n - %s'
-  st = status -sb # -uno
-  tree = log --oneline --decorate --graph
-  latest = for-each-ref --count=10 --sort=-committerdate --format='%(committerdate:short) %(refname:short)'
-  la = log --graph --color --pretty=format:'%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset' --all
+	f = "!git ls-files | grep -i"
+	dr  = "!f() { git diff "$1"^.."$1"; }; f"
+	lc  = "!f() { git ll "$1"^.."$1"; }; f"
+	diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+	dlc = diff --cached HEAD^
+	dl = "!git ll -1"
+	fl = log -u
+	le = log --oneline --decorate
+	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+	lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative # --all
+	report = log --pretty=format:'%Cred%h   %C(bold green)%ai   %C(bold blue)%cn \n - %s'
+	st = status -sb # -uno
+	tree = log --oneline --decorate --graph
+	latest = for-each-ref --count=10 --sort=-committerdate --format='%(committerdate:short) %(refname:short)'
+	la = log --graph --color --pretty=format:'%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset' --all
 [help]
-  autocorrect = 1
+	autocorrect = 1
 [color]
-  ui = auto
-  grep = auto
-  branch = auto
-  diff = auto
+	ui = auto
+	grep = auto
+	branch = auto
+	diff = auto
 [pull]
-  rebase = true
+	rebase = true
 [diff]
-  algorithm = patience
-  status = auto
+	algorithm = patience
+	status = auto
 [filter "media"]
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
-[url "https://"]
-	insteadOf = git://
+[url "git@github.com:"]
+  InsteadOf = git://github.com/
+  InsteadOf = https://github.com/
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f

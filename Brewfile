@@ -1,0 +1,7 @@
+brew "zlib"
+brew "pyenv"
+brew "gpg"
+brew "readline"
+brew "xz"
+tap "puma/puma"
+brew "puma-dev"

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+. /usr/local/share/chruby/chruby.sh
+chruby $(cat $PWD/.ruby-version)

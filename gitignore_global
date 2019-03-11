@@ -45,3 +45,7 @@ Thumbs.db
 # Silver Searcher ignore list #
 ###############################
 .agignore
+
+# Ruby Bundler Packages #
+#########################
+vendor/bundle

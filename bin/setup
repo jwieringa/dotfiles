@@ -1,0 +1,33 @@
+#!/bin/bash
+
+echo "Install dependencies"
+brew bundle --file=~/prj/deps/dotfiles/Brewfile
+
+echo "Move the cursor faster"
+defaults write NSGlobalDomain KeyRepeat -int 0
+
+echo "Create symlinks"
+
+if [ ! -L /Users/jason/.vimrc ]; then
+  ln -s ~/prj/deps/dotfiles/vimrc ~/.vimrc
+fi
+
+if [ ! -L /Users/jason/.zshrc ]; then
+  ln -s ~/prj/deps/dotfiles/zshrc ~/.zshrc
+fi
+
+if [ ! -L /opt/bin ]; then
+  ln -s /Users/jason/prj/deps/dotfiles/bin /opt/bin
+fi
+
+if [ ! -L /Users/jason/.gitconfig ]; then
+  ln -s /Users/jason/prj/deps/dotfiles/gitconfig ~/.gitconfig
+fi
+
+if [ ! -L /Users/jason/.gitignore_global ]; then
+  ln -s /Users/jason/prj/deps/dotfiles/gitconfig ~/.gitignore_global
+fi
+
+ln -s /Users/jason/prj/deps/dotfiles/ignore/.secrets ~/.secrets
+ln -s /Users/jason/prj/deps/dotfiles/ignore/.aws ~/.aws
+ln -s /Users/jason/prj/deps/dotfiles/ignore/.rabbitmqconf ~/.rabbitmqconf 
