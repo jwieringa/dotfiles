@@ -1,4 +1,3 @@
 #!/bin/bash
 
 rabbitmq-server -detached
-

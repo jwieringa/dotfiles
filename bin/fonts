@@ -1,0 +1,13 @@
+#!/bin/bash
+
+TEMP_DIR=$(mktemp -d)
+function finish {
+  rm -rf ${TEMP_DIR}
+}
+trap finish EXIT
+
+pushd $TEMP_DIR
+curl --retry 3 -LO https://www.marksimonson.com/assets/content/fonts/AnonymousPro-1.002.zip
+unzip -d fonts AnonymousPro-1.002.zip
+cp fonts/*/*.ttf ~/Library/Fonts/
+popd

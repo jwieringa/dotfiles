@@ -2,19 +2,19 @@
 # Author: Jason Wieringa
 
 TEMP_DIR=$(mktemp -d)
+function finish {
+  rm -rf ${TEMP_DIR}
+}
+trap finish EXIT
+
 pushd $TEMP_DIR
-
 echo "Download ruby-install package"
-wget -O ruby-install-v0.7.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.7.0.tar.gz
-
+curl --retry 3 -Lo ruby-install-v0.7.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.7.0.tar.gz
 echo "Verify package is from postmodern"
-wget https://raw.githubusercontent.com/postmodern/ruby-install/master/pkg/ruby-install-0.7.0.tar.gz.asc
+curl --retry 3 -LO https://raw.githubusercontent.com/postmodern/ruby-install/master/pkg/ruby-install-0.7.0.tar.gz.asc
 gpg --verify ruby-install-0.7.0.tar.gz.asc ruby-install-v0.7.0.tar.gz
-
 echo "Install ruby-installer"
 tar -xzvf ruby-install-v0.7.0.tar.gz
 cd ruby-install-0.7.0/
 sudo make install
-
 popd
-#rm -rf $TEMP_DIR

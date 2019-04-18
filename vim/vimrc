@@ -121,8 +121,8 @@ let NERDTreeShowHidden=1             " Show hidden files
 " " Mappings
 let mapleader = ","                  " Set leader key
 map <leader>nt :NERDTree<CR>         " Set NERDTree shortcut
-map <leader>ev :e $MYViMRC<CR>       " Quickly edit the vimrc file
-map <leader>sv :so $MYViMRC<CR>      " Quickly reload the vimrc file
+map <leader>ev :e $MYVIMRC<CR>       " Quickly edit the vimrc file
+map <leader>sv :so $MYVIMRC<CR>      " Quickly reload the vimrc file
 map <leader>cs :noh<cr>
 
 " easier window switching
@@ -148,6 +148,7 @@ au BufRead,BufNewFile *.rabl hi def link rubyRabl Function
 " au BufRead,BufNewFile {Jenkinsfile} set ft=groovy
 au BufRead,BufNewFile *.jbuilder setf ruby
 au BufRead,BufNewFile *.chef setf ruby
+au BufRead,BufNewFile *.erb setf ruby
 au BufRead,BufNewFile {Berksfile,Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
 

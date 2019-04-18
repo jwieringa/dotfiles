@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    infect (1.1.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  infect (~> 1.1)
+
+BUNDLED WITH
+   2.0.1

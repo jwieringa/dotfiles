@@ -1,4 +1,7 @@
-export PATH="/usr/local/sbin:/usr/local/bin:/opt/bin:$PATH"
+export PATH="/usr/local/sbin:/usr/local/bin:/opt/bin:/usr/local/go/bin:$PATH"
+
+# Golang
+export GOPATH=$HOME/go
 
 # The following lines were added by compinstall
 
@@ -29,3 +32,7 @@ alias bi="bundle install --path vendor/bundle"
 # Git Alias
 alias gc="git commit"
 alias gst="git status"
+
+# Enable bash style comments
+# https://stackoverflow.com/questions/11670935/comments-in-command-line-zsh
+setopt interactivecomments

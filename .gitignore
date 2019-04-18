@@ -2,3 +2,4 @@ vim/.netrwhist
 *.iso
 *.vmx
 ignore
+bin/puma-dev
